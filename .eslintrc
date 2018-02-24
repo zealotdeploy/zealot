@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/standard"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*-test.js*"],
+        "peerDependencies": true,
+      },
+    ],
+  },
+}

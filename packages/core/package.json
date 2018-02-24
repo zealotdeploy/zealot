@@ -1,0 +1,41 @@
+{
+  "name": "@zealotdeploy/core",
+  "version": "0.0.1",
+  "description": "AWS Hooks for deployment",
+  "main": "dist/index.js",
+  "repository": "zealotdeploy/core",
+  "author": "Jared Meyering <jared.meyering@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "jest"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "dist/"
+    ],
+    "setupFiles": [
+      "./scripts/jest/shim.js"
+    ]
+  },
+  "dependencies": {
+    "aws-sdk": "^2.199.0",
+    "cosmiconfig": "^4.0.0",
+    "dockerode": "^2.5.4",
+    "glob-to-regexp": "^0.4.0",
+    "node-docker-api": "^1.1.21",
+    "tar-fs": "^1.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^22.4.0",
+    "jest": "^22.4.0",
+    "regenerator-runtime": "^0.11.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.56.2",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-resolve": "^3.0.3"
+  }
+}

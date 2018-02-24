@@ -1,0 +1,3 @@
+FROM nginx
+
+ADD . /app
