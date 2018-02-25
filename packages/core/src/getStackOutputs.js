@@ -17,6 +17,7 @@ export default async stackName => {
     res.Stacks[0].Outputs.forEach(output => {
       outputs[output.OutputKey] = output.OutputValue;
     });
+
     return outputs;
   } catch (e) {
     throw Error(e.message);

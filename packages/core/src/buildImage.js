@@ -10,16 +10,13 @@ export default async tag => {
   const fileStream = tar.pack("./", {
     ignore: inDockerIgnore,
   });
+  const stream = await docker.image.build(fileStream, {
+    t: tag,
+  });
 
-  try {
-    const stream = await docker.image.build(fileStream, {
-      t: tag,
-    });
+  await promisifyStream(stream);
 
-    await promisifyStream(stream);
+  const image = await docker.image.get(tag).status();
 
-    return await docker.image.get(tag).status();
-  } catch (e) {
-    throw Error(e.message);
-  }
+  return image;
 };
