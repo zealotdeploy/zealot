@@ -11,10 +11,5 @@ export default async stackName => {
     StackName: stackName,
   });
 
-  try {
-    const res = await req.promise();
-    return res;
-  } catch (e) {
-    throw Error(e.message);
-  }
+  return req.promise();
 };
