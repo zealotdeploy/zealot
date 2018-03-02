@@ -1,5 +1,5 @@
 import { CloudFormation } from "aws-sdk";
-import template from "./cf.json";
+import template from "./cf";
 import config from "./config";
 
 const cf = new CloudFormation({

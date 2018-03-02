@@ -2,11 +2,6 @@
 const execSync = require("child_process").execSync;
 const rimraf = require("rimraf");
 
-const rollup = require("rollup");
-const resolve = require("rollup-plugin-node-resolve");
-const commonjs = require("rollup-plugin-commonjs");
-const babel = require("rollup-plugin-babel");
-
 const exec = (command, extraEnv) =>
   execSync(command, {
     stdio: "inherit",
@@ -23,25 +18,27 @@ const clearDist = () => {
   }
 };
 
-async function buildEs() {
+function buildEs() {
   console.log("\nBuilding ES modules ...");
 
-  exec(`./node_modules/.bin/babel ./src/ -d ./dist/es`, {
-    BABEL_ENV: "es",
-  });
+  exec(
+    `./node_modules/.bin/babel ./src/ -d ./dist/es --ignore '**/*-test.js'`,
+    {
+      BABEL_ENV: "es",
+    },
+  );
 }
 
-async function buildCjs({ input, file }) {
+function buildCjs({ input, file }) {
   console.log(`\nBuilding CJS module ${input}...`);
 
-  exec("babel src/ -d dist/cjs", {
+  exec("babel src/ -d dist/cjs --ignore '**/*-test.js'", {
     BABEL_ENV: "cjs",
   });
 }
 
 clearDist();
 buildEs();
-
 buildCjs({
   input: "src/index.js",
   file: "dist/cjs/index.js",
