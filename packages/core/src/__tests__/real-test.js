@@ -1,18 +1,17 @@
-import buildImage from "../buildImage";
+import getStackOutputs from "../getStackOutputs";
+import config from "../config";
+
+jest.unmock("aws-sdk");
+jest.unmock("../config");
 
 describe("", () => {
-  process.env = {
-    ...process.env,
-    AWS_ACCESS_KEY_ID: "",
-    AWS_SECRET_ACCESS_KEY: "",
-  };
-
   test("", async () => {
+    console.log("config", config);
     /*
      * 1. Build and Deploy Docker Images
      * 2. Generates Task CFN
      * 3. Deploy CFN
      */
-    await buildImage();
+    console.log(await getStackOutputs("Zealot"));
   });
 });
