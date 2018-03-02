@@ -2,6 +2,7 @@
   "name": "@zealotdeploy/core",
   "version": "0.0.1",
   "description": "AWS Hooks for deployment",
+  "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "repository": "zealotdeploy/core",
   "author": "Jared Meyering <jared.meyering@gmail.com>",
