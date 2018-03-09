@@ -1,4 +1,5 @@
 import { Docker } from "node-docker-api";
+import atob from "atob";
 import getAuthorizationToken from "./getAuthorizationToken";
 import promisifyStream from "./promisifyStream";
 

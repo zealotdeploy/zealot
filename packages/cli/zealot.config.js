@@ -15,8 +15,9 @@ const tasks = [
 
 module.exports = {
   tasks,
+  stackName: "Zealot",
   slug: "testing",
-  domain: "test.com",
+  domain: "example.com",
   region: "us-east-2",
   port: 80,
   www: true, // default true

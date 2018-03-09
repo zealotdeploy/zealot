@@ -1,8 +1,13 @@
 import { ECS } from "aws-sdk";
-import config from "./config";
+import zealotConfig from "./config";
 import computeImageName from "./computeImageName";
 
-const registerTask = async () => {
+const registerTask = async (opts = {}) => {
+  const config = {
+    ...zealotConfig,
+    ...opts,
+  };
+
   const awslogConfiguration = prefix => ({
     logDriver: "awslogs",
     options: {
@@ -41,6 +46,7 @@ const registerTask = async () => {
     region: config.region,
   });
 
-  await ecs.registerTaskDefinition(params);
+  const req = await ecs.registerTaskDefinition(params);
+  return req.promise();
 };
 export default registerTask;
