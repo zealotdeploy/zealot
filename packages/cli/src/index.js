@@ -31,8 +31,6 @@ const outputs = async () => {
   });
 
   Promise.all(createTasks).then(async () => {
-    console.log("Stack", stackConfig);
-    console.log("Registering task");
     const registration = await registerTask({
       logGroup: stackConfig.CloudwatchLogsGroup,
     });

@@ -1,5 +1,6 @@
 import { ECS } from "aws-sdk";
 import zealotConfig from "./config";
+import getRepositoryUrl from "./getRepositoryUrl";
 import computeImageName from "./computeImageName";
 
 const registerTask = async (opts = {}) => {
@@ -7,6 +8,8 @@ const registerTask = async (opts = {}) => {
     ...zealotConfig,
     ...opts,
   };
+
+  const repositoryUrl = await getRepositoryUrl();
 
   const awslogConfiguration = prefix => ({
     logDriver: "awslogs",
@@ -26,7 +29,7 @@ const registerTask = async (opts = {}) => {
 
   const generateTaskDefinitionsFromConfig = task => ({
     name: task.name,
-    image: computeImageName(task),
+    image: `${repositoryUrl}/${computeImageName(task)}`,
     logConfiguration: task.logs ? awslogConfiguration(task.name) : null, // default
     memoryReservation: task.memoryReservation ? task.memoryReservation : 5,
     portMappings: task.default ? portMappings(config.port) : null,

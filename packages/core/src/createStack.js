@@ -24,11 +24,11 @@ export default async (stackName, opts = {}) => {
     {
       ParameterKey: "ALBLISTENER",
       ParameterValue:
-        "arn:aws:elasticloadbalancing:us-east-2:763123831132:listener/app/ECSALB/d0bdeab7a8e77fa7/6ac5d09ed4da55e0",
+        " arn:aws:elasticloadbalancing:us-east-2:545046381935:listener/app/ECSALB/cf566e0772d5d704/5b5d299a49d4beab",
     },
     {
       ParameterKey: "ALBPRIORITY",
-      ParameterValue: "1",
+      ParameterValue: "10",
     },
     {
       ParameterKey: "HEALTHCHECKPATH",

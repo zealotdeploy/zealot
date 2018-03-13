@@ -3,6 +3,7 @@ export default {
   Resources: {
     ECSALBListenerRule: {
       Type: "AWS::ElasticLoadBalancingV2::ListenerRule",
+      DependsOn: "ECSTG",
       Properties: {
         Actions: [
           {
@@ -14,7 +15,7 @@ export default {
         ],
         Conditions: [
           {
-            Field: "host-pattern",
+            Field: "host-header",
             Values: [
               {
                 Ref: "HOST",
